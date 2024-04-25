@@ -2,6 +2,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import HomeScreen from '../screens/HomeScreen';
+import LoadingScreen from '../screens/LoadingScreen';
 const Tab = createBottomTabNavigator();
 
 export default function BotTabNav() {
@@ -13,8 +14,8 @@ export default function BotTabNav() {
                     tabBarIcon: ({ focused, color, size }) => {
                         let iconName;
 
-                        if (route.name === 'Home') {
-                            iconName = focused ? 'home' : 'home-outline';
+                        if (route.name === 'Loading') {
+                            iconName = focused ? 'loading' : 'home-outline';
                         }
                         // } else if (route.name === 'Detail') {
                         //     iconName = focused ? 'cloudy' : 'cloudy-outline';
@@ -31,6 +32,7 @@ export default function BotTabNav() {
                     tabBarInactiveTintColor: 'gray'
                 })}
             >
+                <Tab.Screen name="Loading" component={LoadingScreen} />
                 <Tab.Screen name="Home" component={HomeScreen} />
                 {/* <Tab.Screen name="Detail" component={DetailScreen} /> */}
             </Tab.Navigator>
