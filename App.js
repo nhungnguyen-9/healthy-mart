@@ -2,14 +2,14 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import 'react-native-gesture-handler'
 import HomeScreen from './screens/HomeScreen';
-// import BotTabNav from './navigation/BotTabNav';
+import BotTabNav from './navigation/BotTabNav';
 
 export default function App() {
   return (
-    // <BotTabNav></BotTabNav>
-    <View>
-      <HomeScreen />
-    </View>
+    <BotTabNav></BotTabNav>
+    // <View>
+    //   <HomeScreen />
+    // </View>
   );
 }
 
