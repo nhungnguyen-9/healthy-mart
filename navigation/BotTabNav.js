@@ -2,7 +2,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import HomeScreen from '../screens/HomeScreen';
-import LoadingScreen from '../screens/LoadingScreen';
 const Tab = createBottomTabNavigator();
 
 export default function BotTabNav() {
@@ -32,7 +31,7 @@ export default function BotTabNav() {
                     tabBarInactiveTintColor: 'gray'
                 })}
             >
-                <Tab.Screen name="Loading" component={LoadingScreen} />
+                {/* <Tab.Screen name="Loading" component={LoadingScreen} /> */}
                 <Tab.Screen name="Home" component={HomeScreen} />
                 {/* <Tab.Screen name="Detail" component={DetailScreen} /> */}
             </Tab.Navigator>
