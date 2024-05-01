@@ -23,7 +23,7 @@ const ProductContainer = ({ container }) => {
               >
                 <Image
                   style={tw`w-24 h-24`}
-                  source={require("/assets/promotion.png")}
+                  source={require("../assets/promotion.png")}
                 />
                 <Text style={tw`font-semibold text-md`}>{product.title}</Text>
                 <Text style={tw`text-sm text-gray-500`}>{product.weight}</Text>
@@ -31,7 +31,7 @@ const ProductContainer = ({ container }) => {
                 <TouchableOpacity
                   style={tw`bg-slate-200 w-full py-2 rounded-md text-center font-semibold`}
                 >
-                  Add to cart
+                  <Text>Add to cart</Text>
                 </TouchableOpacity>
               </TouchableOpacity>
             ))}

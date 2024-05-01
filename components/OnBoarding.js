@@ -34,11 +34,11 @@ export default function OnBoarding() {
     const navigation = useNavigation();
 
     const handleSkip = () => {
-        navigation.navigate('ForgotPassword');
+        navigation.navigate('Home');
     };
 
     const handleDone = () => {
-        navigation.navigate('ForgotPassword');
+        navigation.navigate('Home');
     };
 
     const Done = ({ ...props }) => (
@@ -79,7 +79,7 @@ export default function OnBoarding() {
             bottomBarColor="#4FC824"
             imageContainerStyles={{ flex: 0.7 }}
             containerStyles={{ backgroundColor: '#4FC824' }}
-            controlContainerStyles={{ marginBottom: 40 }}
+            // controlContainerStyles={{ marginTop: 40 }}
             skipLabel="Skip"
             nextLabel="Next"
             showSkip={true}

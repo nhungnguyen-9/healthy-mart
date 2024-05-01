@@ -1,9 +1,9 @@
 import React from "react";
 import { View } from "react-native";
-import Header from "../components/Header";
+import Header from '../components/Header'
 import tw from "twrnc";
-import ScrollCategory from "../components/scroll-category";
-import ProductContainer from "../components/product-container";
+import ScrollCategory from "../components/Scroll-category";
+import ProductContainer from "../components/Product-container";
 import Promotion from "../components/Promotion";
 
 const HomeScreen = () => {
