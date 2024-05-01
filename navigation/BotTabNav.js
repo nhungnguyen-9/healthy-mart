@@ -3,6 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 import HomeScreen from "../screens/HomeScreen";
 import LoadingScreen from "../screens/LoadingScreen";
+
 const Tab = createBottomTabNavigator();
 
 export default function BotTabNav() {
@@ -28,6 +29,7 @@ export default function BotTabNav() {
 
             return <Ionicons name={iconName} size={size} color={color} />;
           },
+
 
           tabBarActiveTintColor: "#70b9be",
           tabBarInactiveTintColor: "gray",
