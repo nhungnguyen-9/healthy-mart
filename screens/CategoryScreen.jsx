@@ -1,14 +1,11 @@
 import React from "react";
 import { ScrollView, View } from "react-native";
-import Header from "../components/header";
+import HeaderCategory from "../components/header-category";
 import tw from "twrnc";
-import ScrollCategory from "../components/scroll-category";
 import ProductContainer from "../components/product-container";
-import Promotion from "../components/promotion";
 
-const HomeScreen = ({ navigation }) => {
-  const categories = ["All", "Vegetables", "Fruits", "Meats"];
-
+const CategoryScreen = ({ navigation }) => {
+  console.log(navigation);
   const container = [
     {
       title: "Fresh Fruits",
@@ -98,17 +95,14 @@ const HomeScreen = ({ navigation }) => {
       ],
     },
   ];
-
   return (
     <ScrollView style={[tw`flex flex-col bg-white w-full`]}>
-      <Header />
+      <HeaderCategory />
       <View style={tw`px-6 pb-12 pt-4 bg-gray-100`}>
-        <Promotion />
-        <ScrollCategory categories={categories} />
         <ProductContainer container={container} navigation={navigation} />
       </View>
     </ScrollView>
   );
 };
 
-export default HomeScreen;
+export default CategoryScreen;
