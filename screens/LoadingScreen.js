@@ -10,6 +10,7 @@ import NoConnection from "../components/NoConnection";
 import React, { useEffect, useState } from "react";
 import { Provider } from "react-redux";
 import StackNavigator from "../navigation/StackNavigator";
+import store from '../store/store';
 
 const Stack = createStackNavigator();
 

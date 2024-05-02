@@ -1,4 +1,4 @@
-export default PRODUCTS = [
+const PRODUCTS = [
     {
         id: '1',
         name: 'Organic Spinach',
@@ -11,7 +11,8 @@ export default PRODUCTS = [
         unit: 'gm',
         categoryId: '1',
         inStock: true,
-        isFavorite: false
+        isFavorite: false,
+        isBestDeals: true,
     },
     {
         id: '2',
@@ -25,7 +26,8 @@ export default PRODUCTS = [
         unit: 'gm',
         categoryId: '2',
         inStock: true,
-        isFavorite: false
+        isFavorite: false,
+        isBestDeals: false,
     },
     {
         id: '3',
@@ -39,7 +41,8 @@ export default PRODUCTS = [
         unit: 'gm',
         categoryId: '2',
         inStock: true,
-        isFavorite: false
+        isFavorite: false,
+        isBestDeals: true,
     },
     {
         id: '4',
@@ -53,7 +56,8 @@ export default PRODUCTS = [
         unit: 'gm',
         categoryId: '2',
         inStock: true,
-        isFavorite: false
+        isFavorite: false,
+        isBestDeals: false,
     },
     {
         id: '5',
@@ -67,7 +71,8 @@ export default PRODUCTS = [
         unit: 'gm',
         categoryId: '2',
         inStock: true,
-        isFavorite: false
+        isFavorite: false,
+        isBestDeals: false,
     },
     {
         id: '6',
@@ -81,7 +86,8 @@ export default PRODUCTS = [
         unit: 'gm',
         categoryId: '2',
         inStock: true,
-        isFavorite: false
+        isFavorite: false,
+        isBestDeals: false,
     },
     {
         id: '7',
@@ -95,7 +101,8 @@ export default PRODUCTS = [
         unit: 'gm',
         categoryId: '2',
         inStock: true,
-        isFavorite: false
+        isFavorite: false,
+        isBestDeals: false,
     },
 
     {
@@ -110,7 +117,8 @@ export default PRODUCTS = [
         unit: 'gm',
         categoryId: '1',
         inStock: true,
-        isFavorite: false
+        isFavorite: false,
+        isBestDeals: false,
     },
     {
         id: '9',
@@ -124,7 +132,8 @@ export default PRODUCTS = [
         unit: 'gm',
         categoryId: '1',
         inStock: true,
-        isFavorite: false
+        isFavorite: false,
+        isBestDeals: false,
     },
     {
         id: '10',
@@ -138,7 +147,8 @@ export default PRODUCTS = [
         unit: 'gm',
         categoryId: '1',
         inStock: true,
-        isFavorite: false
+        isFavorite: false,
+        isBestDeals: false,
     },
     {
         id: '11',
@@ -152,7 +162,8 @@ export default PRODUCTS = [
         unit: 'gm',
         categoryId: '1',
         inStock: true,
-        isFavorite: false
+        isFavorite: false,
+        isBestDeals: false,
     },
     {
         id: '12',
@@ -166,7 +177,8 @@ export default PRODUCTS = [
         unit: 'gm',
         categoryId: '1',
         inStock: true,
-        isFavorite: false
+        isFavorite: false,
+        isBestDeals: true,
     },
     {
         id: '13',
@@ -180,7 +192,8 @@ export default PRODUCTS = [
         unit: 'gram',
         categoryId: '3',
         inStock: true,
-        isFavorite: false
+        isFavorite: false,
+        isBestDeals: false,
     },
     {
         id: '14',
@@ -194,7 +207,8 @@ export default PRODUCTS = [
         unit: 'gram',
         categoryId: '3',
         inStock: true,
-        isFavorite: false
+        isFavorite: false,
+        isBestDeals: false,
     },
     {
         id: '15',
@@ -208,6 +222,9 @@ export default PRODUCTS = [
         unit: 'gram',
         categoryId: '3',
         inStock: true,
-        isFavorite: false
-    },
+        isFavorite: false,
+        isBestDeals: false,
+    }
 ]
+
+export default PRODUCTS
