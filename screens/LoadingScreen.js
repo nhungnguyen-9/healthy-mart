@@ -10,6 +10,7 @@ import NoConnection from "../components/NoConnection";
 import React, { useEffect, useState } from "react";
 import { Provider } from "react-redux";
 import StackNavigator from "../navigation/StackNavigator";
+import { HomeStack } from "../navigation/BotTabNav";
 
 const Stack = createStackNavigator();
 
@@ -50,6 +51,11 @@ export default function LoadingScreen() {
             options={{ headerShown: false }}
           />
         )}
+        <Stack.Screen
+          name="Auth"
+          component={HomeStack}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
       {/* </Provider> */}
     </NavigationContainer>
