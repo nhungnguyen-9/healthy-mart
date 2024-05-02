@@ -1,6 +1,4 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
-
 import { createStackNavigator } from "@react-navigation/stack";
 
 
@@ -13,6 +11,7 @@ import Register from "../components/Register";
 import LoginAndRegisterScreen from "../screens/LoginAndRegisScreen";
 import Forgot from "../components/Forgot";
 import SMSForgot from "../components/SMSFogot";
+
 const Tab = createBottomTabNavigator();
 
 export function TabNavigator() {
@@ -74,46 +73,46 @@ const HomeStack = () => {
 //     );
 // }
 
-const Tab = createBottomTabNavigator();
+// const Tab = createBottomTabNavigator();
 
-export default function BotTabNav() {
-  return (
-    <NavigationContainer>
-      <Tab.Navigator
-        initialRouteName="Home"
-        screenOptions={({ route }) => ({
-          tabBarShowLabel: false,
-          tabBarIcon: ({ focused, color, size }) => {
-            let iconName;
+// export default function BotTabNav() {
+//   return (
+//     <NavigationContainer>
+//       <Tab.Navigator
+//         initialRouteName="Home"
+//         screenOptions={({ route }) => ({
+//           tabBarShowLabel: false,
+//           tabBarIcon: ({ focused, color, size }) => {
+//             let iconName;
 
-            if (route.name === "Loading") {
-              iconName = focused ? "loading" : "home-outline";
-            }
-            // } else if (route.name === 'Detail') {
-            //     iconName = focused ? 'cloudy' : 'cloudy-outline';
-            // } else if (route.name === 'Location') {
-            //     iconName = focused ? 'location' : 'location-outline';
-            // } else if (route.name === 'Setting') {
-            //     iconName = focused ? 'settings' : 'settings-outline';
-            // }
+//             if (route.name === "Loading") {
+//               iconName = focused ? "loading" : "home-outline";
+//             }
+//             // } else if (route.name === 'Detail') {
+//             //     iconName = focused ? 'cloudy' : 'cloudy-outline';
+//             // } else if (route.name === 'Location') {
+//             //     iconName = focused ? 'location' : 'location-outline';
+//             // } else if (route.name === 'Setting') {
+//             //     iconName = focused ? 'settings' : 'settings-outline';
+//             // }
 
-            return <Ionicons name={iconName} size={size} color={color} />;
-          },
+//             return <Ionicons name={iconName} size={size} color={color} />;
+//           },
 
 
-          tabBarActiveTintColor: "#70b9be",
-          tabBarInactiveTintColor: "gray",
-        })}
-      >
-        <Tab.Screen name="Loading" component={LoadingScreen} />
-        <Tab.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{ headerShown: false }}
-        />
-        {/* <Tab.Screen name="Detail" component={DetailScreen} /> */}
-      </Tab.Navigator>
-    </NavigationContainer>
-  );
-}
+//           tabBarActiveTintColor: "#70b9be",
+//           tabBarInactiveTintColor: "gray",
+//         })}
+//       >
+//         <Tab.Screen name="Loading" component={LoadingScreen} />
+//         <Tab.Screen
+//           name="Home"
+//           component={HomeScreen}
+//           options={{ headerShown: false }}
+//         />
+//         {/* <Tab.Screen name="Detail" component={DetailScreen} /> */}
+//       </Tab.Navigator>
+//     </NavigationContainer>
+//   );
+//}
 

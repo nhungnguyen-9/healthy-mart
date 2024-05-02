@@ -31,5 +31,7 @@ export default function Loading() {
             <ActivityIndicator size="large" color="#00ff00" style={tw`mt-5`} />
 
         </View>
+        </View>
+
     );
 }
