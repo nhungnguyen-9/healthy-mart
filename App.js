@@ -1,23 +1,23 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import 'react-native-gesture-handler'
-import HomeScreen from './screens/HomeScreen';
-import BotTabNav from './navigation/BotTabNav';
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text, View } from "react-native";
+import "react-native-gesture-handler";
+
+import { NavigationContainer } from "@react-navigation/native";
+import { TabNavigator } from "./navigation/BotTabNav";
 
 export default function App() {
-  return (
-    <BotTabNav></BotTabNav>
-    // <View>
-    //   <HomeScreen />
-    // </View>
-  );
+    return (
+        <NavigationContainer>
+            <TabNavigator />
+        </NavigationContainer>
+    );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    container: {
+        flex: 1,
+        backgroundColor: "#fff",
+        alignItems: "center",
+        justifyContent: "center",
+    },
 });
