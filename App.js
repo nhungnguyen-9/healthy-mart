@@ -14,22 +14,3 @@ export default function App() {
     );
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: "#fff",
-        alignItems: "center",
-        justifyContent: "center",
-    },
-});
-=======
-import React from 'react';
-import LoadingScreen from './screens/LoadingScreen';
-
-export default function App() {
-  return (
-    <>
-      <LoadingScreen />
-    </>
-  );
-}
