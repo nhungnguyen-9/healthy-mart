@@ -1,19 +1,27 @@
 import React from "react";
-import { Image, Text, TouchableOpacity, View } from "react-native";
+import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import tw from "twrnc";
-import IonIcon from "@expo/vector-icons/Ionicons";
 import { color } from "../constant/color";
-
+import IonIcon from "@expo/vector-icons/Ionicons";
 const ProductDetail = ({ data }) => {
   return (
-    <View style={tw`pb-64`}>
-      <View style={tw`w-full h-full flex items-center justify-center my-8`}>
+    // <View style={tw`w-full h-full flex flex-col pb-8`}>
+    //   <View style={tw`w-full h-full flex items-center justify-center`}>
+    //     <Image source={require("../assets/products/product-1.png")} />
+    //   </View>
+    // </View>
+
+    <ScrollView>
+      <View
+        style={tw`relative w-full flex items-center bg-[${color["primary-color"]}] rounded-b-full`}
+      >
         <Image
           source={require("../assets/products/product-1.png")}
           style={tw`w-96 h-64`}
         />
       </View>
-      <View style={tw`flex flex-col px-2 -my-12`}>
+
+      <View style={tw`flex flex-col px-2 w-full h-full py-4`}>
         <View style={tw`flex flex-row items-center justify-between`}>
           <Text style={tw`font-bold text-4xl`}>Organic Spinach</Text>
           <Text style={tw`font-bold text-xl`}>14.29$</Text>
@@ -29,7 +37,7 @@ const ProductDetail = ({ data }) => {
           </View>
           <Text style={tw`text-sm`}>500 gm.</Text>
         </View>
-        <Text style={tw`mt-2 text-md text-gray-500`}>
+        <Text style={tw`mt-2 text-lg text-gray-500`}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis
           voluptate vitae quas nisi vel temporibus, facilis quia nesciunt ea
           maxime fugiat commodi quidem aspernatur voluptatum omnis tenetur!
@@ -60,7 +68,7 @@ const ProductDetail = ({ data }) => {
           </Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 

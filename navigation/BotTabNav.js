@@ -10,7 +10,9 @@ import Register from "../components/Register";
 import LoginAndRegisterScreen from "../screens/LoginAndRegisScreen";
 import Forgot from "../components/Forgot";
 import SMSForgot from "../components/SMSFogot";
-import StackNavigator from "./StackNavigator";
+import DetailScreen from "../screens/DetailScreen";
+import CategoryScreen from "../screens/CategoryScreen";
+// import StackNavigator from "./StackNavigator";
 
 const Tab = createBottomTabNavigator();
 
@@ -25,14 +27,53 @@ export function TabNavigator() {
       />
       <Tab.Screen
         name="Home"
-        component={StackNavigator}
-        options={{ headerShown: false }}
+        component={Home}
+        // options={{ headerShown: false }}
       />
     </Tab.Navigator>
   );
 }
 
 const Stack = createStackNavigator();
+
+const Home = () => {
+  return (
+    <Stack.Navigator initialRouteName="Home">
+      <Stack.Screen
+        name="Home"
+        component={HomeScreen}
+        // options={{
+        //   headerShown: false,
+        // }}
+      />
+      <Stack.Screen
+        name="Category"
+        component={CategoryScreen}
+        options={{
+          headerStyle: {
+            backgroundColor: color["primary-color"],
+          },
+          headerTintColor: "#fff",
+          title: null,
+          headerLeftLabelVisible: false,
+        }}
+      />
+      <Stack.Screen
+        name="Detail"
+        component={DetailScreen}
+        options={{
+          headerStyle: {
+            backgroundColor: color["primary-color"],
+          },
+          headerTintColor: "#fff",
+          title: null,
+          headerLeftLabelVisible: false,
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
+
 const HomeStack = () => {
   return (
     <Stack.Navigator initialRouteName="LoginAndRegisterScreen">

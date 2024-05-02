@@ -2,10 +2,9 @@ import React from "react";
 import { ScrollView, View } from "react-native";
 import HeaderCategory from "../components/header-category";
 import tw from "twrnc";
-import ProductContainer from "../components/product-container";
+import ProductContainer from "../components/Product-container";
 
 const CategoryScreen = ({ navigation }) => {
-  console.log(navigation);
   const container = [
     {
       title: "Fresh Fruits",

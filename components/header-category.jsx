@@ -1,6 +1,6 @@
 import React from "react";
 import { View } from "react-native";
-import ScrollCategory from "./scroll-category";
+import ScrollCategory from "./Scroll-category";
 import SearchInput from "./search-input";
 import { color } from "../constant/color";
 import tw from "twrnc";
