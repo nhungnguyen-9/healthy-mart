@@ -1,3 +1,4 @@
+
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import "react-native-gesture-handler";
@@ -21,3 +22,14 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
 });
+=======
+import React from 'react';
+import LoadingScreen from './screens/LoadingScreen';
+
+export default function App() {
+  return (
+    <>
+      <LoadingScreen />
+    </>
+  );
+}
