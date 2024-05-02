@@ -2,15 +2,16 @@ import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import tw from "twrnc";
 import { color } from "../constant/color";
+import IonIcon from "@expo/vector-icons/Ionicons";
 
-// import Ionicons from "@expo/vector-icons/Ionicons";
-const Header = () => {
+const Header = ({ navigation }) => {
+  console.log(navigation);
   return (
     <View style={tw`w-full h-28 bg-white`}>
       {/* <IonIcon name="personal-outline" /> */}
       <View style={tw`h-full flex items-end justify-around flex-row py-4`}>
-        <TouchableOpacity>
-          <Text>Icon 1</Text>
+        <TouchableOpacity onPress={() => navigation.navigate("Auth")}>
+          <IonIcon name="person-outline" size={20}></IonIcon>
         </TouchableOpacity>
         <View style={tw`flex items-center justify-center`}>
           <Text style={tw`text-sm text-slate-500`}>Welcome to</Text>
@@ -21,7 +22,7 @@ const Header = () => {
           </Text>
         </View>
         <TouchableOpacity>
-          <Text>Icon 2</Text>
+          <IonIcon name="search-outline" size={20}></IonIcon>
         </TouchableOpacity>
       </View>
     </View>

@@ -101,7 +101,7 @@ const HomeScreen = ({ navigation }) => {
 
   return (
     <ScrollView style={[tw`flex flex-col bg-white w-full`]}>
-      <Header />
+      <Header navigation={navigation} />
       <View style={tw`px-6 pb-12 pt-4 bg-gray-100`}>
         <Promotion />
         <ScrollCategory categories={categories} />

@@ -12,23 +12,16 @@ import Forgot from "../components/Forgot";
 import SMSForgot from "../components/SMSFogot";
 import DetailScreen from "../screens/DetailScreen";
 import CategoryScreen from "../screens/CategoryScreen";
-// import StackNavigator from "./StackNavigator";
 
 const Tab = createBottomTabNavigator();
 
 export function TabNavigator() {
   return (
     <Tab.Navigator>
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen
-        name="HomeStack"
-        component={HomeStack}
-        options={{ headerShown: false, tabBarStyle: { display: "none" } }}
-      />
       <Tab.Screen
         name="Home"
         component={Home}
-        // options={{ headerShown: false }}
+        options={{ headerShown: false }}
       />
     </Tab.Navigator>
   );
@@ -42,9 +35,9 @@ const Home = () => {
       <Stack.Screen
         name="Home"
         component={HomeScreen}
-        // options={{
-        //   headerShown: false,
-        // }}
+        options={{
+          headerShown: false,
+        }}
       />
       <Stack.Screen
         name="Category"
@@ -70,16 +63,19 @@ const Home = () => {
           headerLeftLabelVisible: false,
         }}
       />
+
+      <Stack.Screen name="Auth" component={HomeStack} />
     </Stack.Navigator>
   );
 };
 
-const HomeStack = () => {
+export const HomeStack = () => {
   return (
     <Stack.Navigator initialRouteName="LoginAndRegisterScreen">
       <Stack.Screen
         name="LoginAndRegisterScreen"
         component={LoginAndRegisterScreen}
+        options={{ headerShown: false }}
       />
       <Stack.Screen name="Register" component={Register} />
       <Stack.Screen name="Login" component={Login} />
