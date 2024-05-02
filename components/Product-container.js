@@ -1,33 +1,47 @@
 import React from "react";
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import tw from "twrnc";
+import IonIcon from "@expo/vector-icons/Ionicons";
 
-const ProductContainer = ({ container }) => {
+const ProductContainer = ({ navigation, container }) => {
   return (
     <View>
       {container.map((item, index) => (
         <View key={index}>
-          <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between", paddingVertical: 4 }}>
-            <Text style={{ fontSize: 20, fontWeight: "bold" }}>{item.title}</Text>
-            <Text style={{ fontSize: 14, color: "#34D399" }}>See all</Text>
+          <View style={tw`flex flex-row items-center justify-between py-4`}>
+            <Text style={tw`text-xl font-bold`}>{item.title}</Text>
+            <Text
+              onPress={() => navigation.navigate("Category")}
+              style={tw`text-sm text-green-500`}
+            >
+              See all
+            </Text>
           </View>
-          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+          <ScrollView
+            horizontal={true}
+            style={tw`flex`}
+            showsHorizontalScrollIndicator={false}
+          >
             {item.products.map((product, index) => (
               <TouchableOpacity
                 key={index}
-                style={{ width: 160, paddingHorizontal: 8, paddingVertical: 12, borderRadius: 6, backgroundColor: "#FFF", flexDirection: "column", alignItems: "center", justifyContent: "center", marginRight: 8 }}
+                style={tw`relative w-40 px-2 py-4 gap-2 rounded-md bg-white flex items-center justify-center mr-2`}
+                onPress={() => navigation.navigate("Detail")}
               >
+                <TouchableOpacity style={tw`absolute top-1 left-1`}>
+                  <IonIcon name="heart-outline" size={20} />
+                </TouchableOpacity>
                 <Image
-                  style={{ width: 96, height: 96 }}
+                  style={tw`w-24 h-24`}
                   source={require("../assets/promotion.png")}
                 />
-                <Text style={{ fontWeight: "bold", fontSize: 16 }}>{product.title}</Text>
-                <Text style={{ fontSize: 14, color: "#718096" }}>{product.weight}</Text>
-                <Text style={{ fontWeight: "bold", fontSize: 24 }}>{product.price}</Text>
+                <Text style={tw`font-semibold`}>{product.title}</Text>
+                <Text style={tw`text-sm text-gray-500`}>{product.weight}</Text>
+                <Text style={tw`font-bold text-2xl`}>{product.price}</Text>
                 <TouchableOpacity
-                  style={{ width: "100%", padding: 8, borderRadius: 6, backgroundColor: "#718096", marginTop: 8 }}
+                  style={tw`bg-slate-200 w-full py-2 rounded-md`}
                 >
-                  <Text style={{ fontWeight: "bold", fontSize: 16, color: "#FFF", textAlign: "center" }}>Add to cart</Text>
+                  <Text style={tw`text-center font-semibold`}>Add to cart</Text>
                 </TouchableOpacity>
               </TouchableOpacity>
             ))}
