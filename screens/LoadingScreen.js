@@ -8,6 +8,7 @@ import HomeScreen from './HomeScreen';
 import NetInfo from '@react-native-community/netinfo';
 import NoConnection from '../components/NoConnection';
 import React, { useEffect, useState } from 'react';
+import { Provider } from 'react-redux';
 
 const Stack = createStackNavigator()
 
@@ -23,6 +24,7 @@ export default function LoadingScreen() {
 
     return (
         <NavigationContainer>
+            {/* <Provider> */}
             <Stack.Navigator>
                 <Stack.Screen name="Loading" component={Loading} options={{ headerShown: false }} />
                 <Stack.Screen name="On Boarding" component={OnBoardingScreen} options={{ headerShown: false }} />
@@ -32,6 +34,7 @@ export default function LoadingScreen() {
                     <Stack.Screen name="No Connection" component={NoConnection} options={{ headerShown: false }} />
                 )}
             </Stack.Navigator>
+            {/* </Provider> */}
         </NavigationContainer>
     );
 }
