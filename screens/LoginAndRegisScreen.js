@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity,Image } from "react-native";
 import tw from "twrnc";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -7,6 +7,9 @@ export default function LoginAndRegisterScreen(props) {
     return (
         <View style={tw`bg-white p-5 flex-1 flex justify-center items-center`}>
             <View style={tw`w-full`}>
+            <TouchableOpacity style={tw`flex justify-center items-center mt-5`} onPress={() => props.navigation.navigate("Home")}>
+                <Image style={{ width: "500px", height: "300px" }} source={require("/public/login-and-regis.jpg")} />
+            </TouchableOpacity>
                 <Text style={tw`text-2xl text-center font-bold`}>Let's your in</Text>
                 <View style={tw`flex flex-col gap-5 my-5`}>
                     <TouchableOpacity style={tw`w-full`}>
