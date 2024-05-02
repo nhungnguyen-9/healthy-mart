@@ -1,11 +1,10 @@
-import { forVerticalIOS } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/CardStyleInterpolators'
 import { createSlice } from '@reduxjs/toolkit'
-import React from 'react'
+import PRODUCTS from '../data/productData'
 
 export const productSlice = createSlice({
     name: 'product',
     initialState: {
-        // products: PRODUCTS
+        products: PRODUCTS,
         // filterProducts: PRODUCTS,
         favoriteProducts: []
     },

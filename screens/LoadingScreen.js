@@ -11,6 +11,7 @@ import React, { useEffect, useState } from "react";
 import { Provider } from "react-redux";
 import StackNavigator from "../navigation/StackNavigator";
 import { HomeStack } from "../navigation/BotTabNav";
+import store from '../store/store';
 
 const Stack = createStackNavigator();
 
