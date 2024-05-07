@@ -1,14 +1,12 @@
-
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
 import "react-native-gesture-handler";
-import { NavigationContainer } from "@react-navigation/native";
-import { TabNavigator } from "./navigation/BotTabNav";
 import LoadingScreen from "./screens/LoadingScreen";
+import { Provider } from "react-redux";
+import store from "./store/store";
 
 export default function App() {
   return (
-    <LoadingScreen />
+    <Provider store={store}>
+      <LoadingScreen />
+    </Provider>
   );
 }
-

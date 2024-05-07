@@ -5,15 +5,32 @@ import { Ionicons } from "@expo/vector-icons";
 
 import { TextInput, HelperText } from "react-native-paper";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import USERS from "../data/userData";
+import { useDispatch } from "react-redux";
+import { setUser } from "../store/authSlice";
 export default function Login(props) {
+  const dispatch = useDispatch();
+
   const [eye, setEye] = React.useState(true);
 
-  const [text, setText] = React.useState("");
-
-  const onChangeText = (text) => setText(text);
-
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [isValidCredentials, setIsValidCredentials] = React.useState(true);
+  const onChangeText = (text, setField) => setField(text);
   const hasErrors = () => {
-    return !text.includes("@");
+    return email.length > 0 && !email.includes("@");
+  };
+
+  const handleSubmit = () => {
+    const user = USERS.find(
+      (user) => user.email === email && user.password === password
+    );
+    console.log("user: ", user);
+    if (!user) return setIsValidCredentials(false);
+    if (user) {
+      dispatch(setUser(user));
+      props.navigation.navigate("Home");
+    }
   };
 
   return (
@@ -29,14 +46,19 @@ export default function Login(props) {
       </Text>
       <View style={tw``}>
         <TextInput
-          value={text}
-          onChangeText={onChangeText}
+          value={email}
+          onChangeText={(e) => onChangeText(e, setEmail)}
           mode="outlined"
           outlineColor="#ccc"
           activeOutlineColor="#38b000"
           label="Email address"
         />
-        <HelperText type="error" visible={!hasErrors()}>
+        {!isValidCredentials && (
+          <HelperText type="error" visible={!isValidCredentials}>
+            Invalid Credentials
+          </HelperText>
+        )}
+        <HelperText type="error" visible={hasErrors()}>
           Email address is invalid!
         </HelperText>
       </View>
@@ -46,7 +68,9 @@ export default function Login(props) {
           outlineColor="#ccc"
           activeOutlineColor="#38b000"
           label="Password"
-          secureTextEntry={text}
+          value={password}
+          onChangeText={(e) => onChangeText(e, setPassword)}
+          secureTextEntry={eye}
           right={
             <TextInput.Icon
               icon={eye ? "eye-off" : "eye"}
@@ -54,11 +78,16 @@ export default function Login(props) {
             />
           }
         />
-        <HelperText type="error" visible={!hasErrors()}>
-          Password is not working
-        </HelperText>
+        {!isValidCredentials && (
+          <HelperText type="error" visible={!isValidCredentials}>
+            Invalid credentials
+          </HelperText>
+        )}
       </View>
-      <TouchableOpacity style={tw`py-2 bg-[#38b000] rounded-md my-5  `}>
+      <TouchableOpacity
+        onPress={handleSubmit}
+        style={tw`py-2 bg-[#38b000] rounded-md my-5  `}
+      >
         <Text style={tw`text-white text-center text-lg`}>Login</Text>
       </TouchableOpacity>
       <View style={tw`relative border-t border-[#a8a8a8] my-5`}>

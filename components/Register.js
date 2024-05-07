@@ -5,15 +5,34 @@ import { Ionicons } from "@expo/vector-icons";
 
 import { TextInput, HelperText } from "react-native-paper";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import USERS from "../data/userData";
 export default function Register(props) {
   const [eye, setEye] = React.useState(true);
 
-  const [text, setText] = React.useState("");
-
-  const onChangeText = (text) => setText(text);
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [isValidEmail, setIsValidEmail] = React.useState(true);
+  const onChangeText = (text, setField) => setField(text);
 
   const hasErrors = () => {
-    return !text.includes("@");
+    return (
+      (email.length > 0 && !email.includes("@")) ||
+      (password.length > 1 && password.length < 6)
+    );
+  };
+
+  const handleCreateAccount = () => {
+    const isEmailExist = USERS.find((user) => user.email === email);
+    if (isEmailExist) return setIsValidEmail(false);
+    const id = USERS.length;
+
+    USERS.push({
+      id: id + 1,
+      email: email,
+      password: password,
+    });
+
+    props.navigation.navigate("Login");
   };
 
   return (
@@ -29,16 +48,22 @@ export default function Register(props) {
       </Text>
       <View style={tw``}>
         <TextInput
-          value={text}
-          onChangeText={onChangeText}
+          value={email}
+          onChangeText={(e) => onChangeText(e, setEmail)}
           mode="outlined"
           outlineColor="#ccc"
           activeOutlineColor="#38b000"
           label="Email address"
         />
-        <HelperText type="error" visible={!hasErrors()}>
-          Email address is invalid!
-        </HelperText>
+        {!isValidEmail ? (
+          <HelperText type="error" visible={true}>
+            Email is already exist!
+          </HelperText>
+        ) : (
+          <HelperText type="error" visible={hasErrors()}>
+            Email address is invalid!
+          </HelperText>
+        )}
       </View>
       <View>
         <TextInput
@@ -46,7 +71,9 @@ export default function Register(props) {
           outlineColor="#ccc"
           activeOutlineColor="#38b000"
           label="Password"
-          secureTextEntry={text}
+          value={password}
+          onChangeText={(e) => onChangeText(e, setPassword)}
+          secureTextEntry={eye}
           right={
             <TextInput.Icon
               icon={eye ? "eye-off" : "eye"}
@@ -54,11 +81,14 @@ export default function Register(props) {
             />
           }
         />
-        <HelperText type="error" visible={!hasErrors()}>
-          Password is not working
+        <HelperText type="error" visible={hasErrors()}>
+          Password must greater than 6 characters
         </HelperText>
       </View>
-      <TouchableOpacity style={tw`py-2 bg-[#38b000] rounded-md my-5  `}>
+      <TouchableOpacity
+        onPress={handleCreateAccount}
+        style={tw`py-2 bg-[#38b000] rounded-md my-5  `}
+      >
         <Text style={tw`text-white text-center text-lg`}>
           Create an account
         </Text>
