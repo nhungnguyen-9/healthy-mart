@@ -36,7 +36,6 @@ const ProductContainer = ({ navigation, data }) => {
       dispatch(removeFromFavorites({ id: product.id }));
     } else {
       dispatch(addToFavorites({ id: product.id }));
-      navigation.navigate("Favorite");
     }
   };
 
