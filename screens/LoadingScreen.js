@@ -12,6 +12,7 @@ import { Provider } from "react-redux";
 import StackNavigator from "../navigation/StackNavigator";
 import { HomeStack } from "../navigation/BotTabNav";
 import store from '../store/store';
+import CartScreen from "./CartScreen";
 
 const Stack = createStackNavigator();
 
@@ -27,38 +28,43 @@ export default function LoadingScreen() {
 
   return (
     <NavigationContainer>
-      {/* <Provider> */}
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Loading"
-          component={Loading}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="On Boarding"
-          component={OnBoardingScreen}
-          options={{ headerShown: false }}
-        />
-        {connectionStatus ? (
+      <Provider store={store} >
+        <Stack.Navigator>
           <Stack.Screen
-            name="Home"
-            component={StackNavigator}
+            name="Loading"
+            component={Loading}
             options={{ headerShown: false }}
           />
-        ) : (
           <Stack.Screen
-            name="No Connection"
-            component={NoConnection}
+            name="On Boarding"
+            component={OnBoardingScreen}
             options={{ headerShown: false }}
           />
-        )}
-        <Stack.Screen
-          name="Auth"
-          component={HomeStack}
-          options={{ headerShown: false }}
-        />
-      </Stack.Navigator>
-      {/* </Provider> */}
+          {connectionStatus ? (
+            <Stack.Screen
+              name="Home"
+              component={StackNavigator}
+              options={{ headerShown: false }}
+            />
+          ) : (
+            <Stack.Screen
+              name="No Connection"
+              component={NoConnection}
+              options={{ headerShown: false }}
+            />
+          )}
+          <Stack.Screen
+            name="Auth"
+            component={HomeStack}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Cart"
+            component={CartScreen}
+            options={{ headerShown: false }}
+          />
+        </Stack.Navigator>
+      </Provider>
     </NavigationContainer>
   );
 }

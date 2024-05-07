@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
-import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
+import { NavigationContainer, getFocusedRouteNameFromRoute } from "@react-navigation/native";
 
 import { Ionicons } from "@expo/vector-icons";
 import HomeScreen from "../screens/HomeScreen";
@@ -17,13 +17,36 @@ const Tab = createBottomTabNavigator();
 
 export function TabNavigator() {
   return (
-    <Tab.Navigator>
-      <Tab.Screen
-        name="Home"
-        component={Home}
-        options={{ headerShown: false }}
-      />
-    </Tab.Navigator>
+    <NavigationContainer>
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName;
+
+            if (route.name === "Home") {
+              iconName = focused ? "home" : "home-outline";
+            } else if (route.name === "Category") {
+              iconName = focused ? "apps" : "apps-outline";
+            } else if (route.name === "Cart") {
+              iconName = focused ? "cart" : "cart-outline";
+            } else if (route.name === "Favorite") {
+              iconName = focused ? "heart" : "heart-outline";
+            }
+
+            return <Ionicons name={iconName} size={size} color={color} />;
+          },
+        })}
+        tabBarOptions={{
+          activeTintColor: "tomato",
+          inactiveTintColor: "gray",
+        }}
+      >
+        <Tab.Screen name="Home" component={HomeStack} />
+        <Tab.Screen name="Category" component={CategoryStack} />
+        <Tab.Screen name="Cart" component={CartStack} />
+        <Tab.Screen name="Favorite" component={FavoriteStack} />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
 

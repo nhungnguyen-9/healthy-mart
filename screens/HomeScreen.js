@@ -7,8 +7,17 @@ import ProductContainer from "../components/Product-container";
 import Promotion from "../components/Promotion";
 import CATEGORIES from "../data/categoryData";
 import PRODUCTS from "../data/productData";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Ionicons } from "@expo/vector-icons";
+import { color } from "../constant/color";
+import CategoryScreen from "./CategoryScreen";
+import CartScreen from "./CartScreen";
+import FavoriteScreen from "./FavoriteScreen";
+import AllProductsScreen from "./AllProductScreens";
 
-const HomeScreen = ({ navigation }) => {
+const Tab = createBottomTabNavigator();
+
+const HomeTabScreen = ({ navigation }) => {
   const [data, setData] = useState();
   const categories = ["All", "Vegetables", "Fruits", "Meats"];
 
@@ -55,6 +64,40 @@ const HomeScreen = ({ navigation }) => {
         <ProductContainer data={data} navigation={navigation} />
       </View>
     </ScrollView>
+  );
+};
+
+const HomeScreen = () => {
+  return (
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => {
+          let iconName;
+
+          if (route.name === "Home") {
+            iconName = focused ? "home" : "home-outline";
+          } else if (route.name === "All") {
+            iconName = focused ? "apps" : "apps-outline";
+          } else if (route.name === "Cart") {
+            iconName = focused ? "cart" : "cart-outline";
+          } else if (route.name === "Favorite") {
+            iconName = focused ? "heart" : "heart-outline";
+          }
+
+          return <Ionicons name={iconName} size={size} color={color} />;
+        },
+        tabBarLabel: '',
+      })}
+      tabBarOptions={{
+        activeTintColor: color["primary-color"],
+        inactiveTintColor: "gray"
+      }}
+    >
+      <Tab.Screen name="Home" component={HomeTabScreen} options={{ headerShown: false }} />
+      <Tab.Screen name="All" component={AllProductsScreen} options={{ headerShown: false }} />
+      <Tab.Screen name="Cart" component={CartScreen} options={{ headerShown: false }} />
+      <Tab.Screen name="Favorite" component={FavoriteScreen} options={{ headerShown: false }} />
+    </Tab.Navigator>
   );
 };
 
