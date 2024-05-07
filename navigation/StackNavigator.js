@@ -5,6 +5,8 @@ import CategoryScreen from "../screens/CategoryScreen";
 import HomeScreen from "../screens/HomeScreen";
 import { color } from "../constant/color";
 import DetailScreen from "../screens/DetailScreen";
+import CartScreen from "../screens/CartScreen";
+import FavoriteScreen from "../screens/FavoriteScreen";
 
 const Stack = createStackNavigator();
 const StackNavigator = () => {
@@ -27,7 +29,6 @@ const StackNavigator = () => {
           headerTintColor: "#fff",
           title: null,
           headerLeftLabelVisible: false,
-          headerShown: false,
         }}
       />
       <Stack.Screen
@@ -40,7 +41,30 @@ const StackNavigator = () => {
           headerTintColor: "#fff",
           title: null,
           headerLeftLabelVisible: false,
-          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Cart"
+        component={CartScreen}
+        options={{
+          headerStyle: {
+            backgroundColor: color["primary-color"],
+          },
+          headerTintColor: "#fff",
+          title: null,
+          headerLeftLabelVisible: false,
+        }}
+      />
+      <Stack.Screen
+        name="Favorite"
+        component={FavoriteScreen}
+        options={{
+          headerStyle: {
+            backgroundColor: color["primary-color"],
+          },
+          headerTintColor: "#fff",
+          title: null,
+          headerLeftLabelVisible: false,
         }}
       />
     </Stack.Navigator>

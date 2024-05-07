@@ -1,10 +1,39 @@
-import React, { useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import tw from "twrnc";
 import { color } from "../constant/color";
 import IonIcon from "@expo/vector-icons/Ionicons";
+import { useDispatch } from "react-redux";
+import { addToCart, addToFavorites } from "../store/productSlice";
+import { useNavigation } from "@react-navigation/native";
+import FlashMessage, { showMessage } from "react-native-flash-message";
+
 const ProductDetail = ({ data }) => {
   const [productQuantity, setProductQuantity] = useState(1);
+  const dispatch = useDispatch();
+  const navigation = useNavigation();
+
+  const handleAddToCart = () => {
+    dispatch(addToCart({ id: data.id, quantity: productQuantity }));
+    setProductQuantity(1);
+    showMessage({
+      message: "Added Product To Cart!",
+      type: "success",
+    });
+  };
+
+  const handleAddToFavorite = () => {
+    dispatch(addToFavorites({ id: data.id }));
+    showMessage({
+      message: "Added Product To Favorite!",
+      type: "success"
+    });
+  };
+
+  useLayoutEffect(() => {
+    navigation.setOptions({ title: data.name });
+  }, [navigation, data.name]);
+
   return (
     <ScrollView>
       <View
@@ -48,7 +77,7 @@ const ProductDetail = ({ data }) => {
             size={40}
             style={tw`text-[${color["primary-color"]}]`}
             onPress={() => setProductQuantity(productQuantity + 1)}
-          ></IonIcon>
+          />
           <Text style={tw`text-xl font-semibold`}>{productQuantity}</Text>
           <IonIcon
             name="remove-circle-outline"
@@ -57,20 +86,28 @@ const ProductDetail = ({ data }) => {
             onPress={() =>
               productQuantity > 1 && setProductQuantity(productQuantity - 1)
             }
-          ></IonIcon>
+          />
         </View>
 
-        <TouchableOpacity style={tw`px-6 py-4 bg-green-500 rounded-lg`}>
+        <TouchableOpacity
+          style={tw`px-6 py-4 bg-green-500 rounded-lg`}
+          onPress={handleAddToCart}
+        >
           <Text style={tw`text-center text-white text-md font-semibold`}>
             Add to Cart
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={tw`px-6 py-4`}>
+        <TouchableOpacity
+          style={tw`px-6 py-4`}
+          onPress={handleAddToFavorite}
+        >
           <Text style={tw`text-center text-black text-md`}>
             Add to Favorite
           </Text>
         </TouchableOpacity>
       </View>
+
+      <FlashMessage position="top" />
     </ScrollView>
   );
 };
