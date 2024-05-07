@@ -27,6 +27,7 @@ const StackNavigator = () => {
           headerTintColor: "#fff",
           title: null,
           headerLeftLabelVisible: false,
+          headerShown: false,
         }}
       />
       <Stack.Screen
@@ -39,6 +40,7 @@ const StackNavigator = () => {
           headerTintColor: "#fff",
           title: null,
           headerLeftLabelVisible: false,
+          headerShown: false,
         }}
       />
     </Stack.Navigator>

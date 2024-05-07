@@ -5,7 +5,6 @@ import { color } from "../constant/color";
 import IonIcon from "@expo/vector-icons/Ionicons";
 
 const Header = ({ navigation }) => {
-  console.log(navigation);
   return (
     <View style={tw`w-full h-28 bg-white`}>
       {/* <IonIcon name="personal-outline" /> */}

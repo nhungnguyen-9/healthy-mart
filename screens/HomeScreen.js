@@ -1,103 +1,50 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ScrollView, View } from "react-native";
 import Header from "../components/Header";
 import tw from "twrnc";
 import ScrollCategory from "../components/Scroll-category";
 import ProductContainer from "../components/Product-container";
 import Promotion from "../components/Promotion";
+import CATEGORIES from "../data/categoryData";
+import PRODUCTS from "../data/productData";
 
 const HomeScreen = ({ navigation }) => {
+  const [data, setData] = useState();
   const categories = ["All", "Vegetables", "Fruits", "Meats"];
 
-  const container = [
-    {
-      title: "Fresh Fruits",
-      products: [
-        {
-          title: "Fresh Orange",
-          weight: "500gm.",
-          price: "14.29$",
-          favorite: false,
-          quantity: 1,
-          image: "",
-        },
-        {
-          title: "Strawberry",
-          weight: "500gm.",
-          price: "14.29$",
-          favorite: false,
-          quantity: 1,
-          image: "",
-        },
-        {
-          title: "Red apple",
-          weight: "500gm.",
-          price: "14.29$",
-          favorite: false,
-          quantity: 1,
-          image: "",
-        },
-      ],
-    },
-    {
-      title: "Fresh Vegetables",
-      products: [
-        {
-          title: "Broccoli",
-          weight: "500gm.",
-          price: "14.29$",
-          favorite: false,
-          quantity: 1,
-          image: "",
-        },
-        {
-          title: "Betternut squash",
-          weight: "500gm.",
-          price: "14.29$",
-          favorite: false,
-          quantity: 1,
-          image: "",
-        },
-        {
-          title: "Radishes",
-          weight: "500gm.",
-          price: "14.29$",
-          favorite: false,
-          quantity: 1,
-          image: "",
-        },
-      ],
-    },
-    {
-      title: "Best Deals",
-      products: [
-        {
-          title: "Cheese Swiss",
-          weight: "500gm.",
-          price: "14.29$",
-          favorite: false,
-          quantity: 1,
-          image: "",
-        },
-        {
-          title: "Delicious Bread",
-          weight: "500gm.",
-          price: "14.29$",
-          favorite: false,
-          quantity: 1,
-          image: "",
-        },
-        {
-          title: "Radishes",
-          weight: "500gm.",
-          price: "14.29$",
-          favorite: false,
-          quantity: 1,
-          image: "",
-        },
-      ],
-    },
-  ];
+  useEffect(() => {
+    const groupProductsByCategory = (products, categories) => {
+      const groupedProducts = {};
+
+      // Initialize groupedProducts with empty arrays for each category
+      categories.forEach((category) => {
+        groupedProducts[category.name] = [];
+      });
+
+      // Populate groupedProducts with products
+      products.forEach((product) => {
+        const categoryName = categories.find(
+          (category) => category.id === product.categoryId
+        )?.name;
+        if (categoryName) {
+          groupedProducts[categoryName].push(product);
+        }
+      });
+
+      // Convert groupedProducts object into array of objects with title and products
+      const result = Object.entries(groupedProducts).map(
+        ([title, products]) => ({
+          title,
+          products,
+        })
+      );
+
+      return result;
+    };
+
+    const groupedProducts = groupProductsByCategory(PRODUCTS, CATEGORIES);
+    setData(groupedProducts);
+  }, []);
 
   return (
     <ScrollView style={[tw`flex flex-col bg-white w-full`]}>
@@ -105,7 +52,7 @@ const HomeScreen = ({ navigation }) => {
       <View style={tw`px-6 pb-12 pt-4 bg-gray-100`}>
         <Promotion />
         <ScrollCategory categories={categories} />
-        <ProductContainer container={container} navigation={navigation} />
+        <ProductContainer data={data} navigation={navigation} />
       </View>
     </ScrollView>
   );
