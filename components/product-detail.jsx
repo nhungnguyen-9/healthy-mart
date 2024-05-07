@@ -1,59 +1,62 @@
-import React from "react";
+import React, { useState } from "react";
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import tw from "twrnc";
 import { color } from "../constant/color";
 import IonIcon from "@expo/vector-icons/Ionicons";
 const ProductDetail = ({ data }) => {
+  const [productQuantity, setProductQuantity] = useState(1);
   return (
-    // <View style={tw`w-full h-full flex flex-col pb-8`}>
-    //   <View style={tw`w-full h-full flex items-center justify-center`}>
-    //     <Image source={require("../assets/products/product-1.png")} />
-    //   </View>
-    // </View>
-
     <ScrollView>
       <View
-        style={tw`relative w-full flex items-center bg-[${color["primary-color"]}] rounded-b-full`}
+        id={data.id}
+        style={tw`relative w-full flex items-center bg-[${color["primary-color"]}] rounded-b-full pt-12`}
       >
         <Image
-          source={require("../assets/products/product-1.png")}
-          style={tw`w-96 h-64`}
+          source={data.image}
+          style={{
+            width: 300,
+            height: 300,
+            objectFit: "contain",
+          }}
         />
       </View>
 
       <View style={tw`flex flex-col px-2 w-full h-full py-4`}>
         <View style={tw`flex flex-row items-center justify-between`}>
-          <Text style={tw`font-bold text-4xl`}>Organic Spinach</Text>
-          <Text style={tw`font-bold text-xl`}>14.29$</Text>
+          <Text style={tw`font-bold text-4xl`}>{data.name}</Text>
+          <Text style={tw`font-bold text-xl`}>{data.price}$</Text>
         </View>
-        <View style={tw`flex flex-row items-center justify-between`}>
+        <View style={tw`flex flex-row items-center justify-between mt-2`}>
           <View style={tw`flex flex-row gap-1`}>
             <IonIcon name="star" style={tw`text-green-500 font-bold`} />
             <IonIcon name="star" style={tw`text-green-500 font-bold`} />
             <IonIcon name="star" style={tw`text-green-500 font-bold`} />
             <IonIcon name="star" style={tw`text-green-500 font-bold`} />
             <IonIcon name="star" style={tw`text-gray-500 font-bold`} />
-            <Text style={tw`text-sm`}>4.0 . 98 reviews</Text>
+            <Text style={tw`text-sm`}>
+              {data.rating} . {data.numReview} reviews
+            </Text>
           </View>
-          <Text style={tw`text-sm`}>500 gm.</Text>
+          <Text style={tw`text-sm`}>
+            {data.quantity} {data.unit}.
+          </Text>
         </View>
-        <Text style={tw`mt-2 text-lg text-gray-500`}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis
-          voluptate vitae quas nisi vel temporibus, facilis quia nesciunt ea
-          maxime fugiat commodi quidem aspernatur voluptatum omnis tenetur!
-          Ratione, cumque debitis!
-        </Text>
+        <Text style={tw`mt-2 text-lg text-gray-500`}>{data.description}</Text>
         <View style={tw`flex flex-row gap-2 items-center py-4`}>
           <IonIcon
             name="add-circle-outline"
             size={40}
             style={tw`text-[${color["primary-color"]}]`}
+            onPress={() => setProductQuantity(productQuantity + 1)}
           ></IonIcon>
-          <Text style={tw`text-xl font-semibold`}>01</Text>
+          <Text style={tw`text-xl font-semibold`}>{productQuantity}</Text>
           <IonIcon
             name="remove-circle-outline"
             size={40}
             style={tw`text-[${color["primary-color"]}]`}
+            onPress={() =>
+              productQuantity > 1 && setProductQuantity(productQuantity - 1)
+            }
           ></IonIcon>
         </View>
 
