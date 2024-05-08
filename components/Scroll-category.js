@@ -2,7 +2,7 @@ import React from "react";
 import { ScrollView, Text, TouchableOpacity } from "react-native";
 import tw from "twrnc";
 
-const ScrollCategory = ({ categories }) => {
+const ScrollCategory = ({ categories, navigation }) => {
   return (
     <ScrollView
       showsHorizontalScrollIndicator={false}
