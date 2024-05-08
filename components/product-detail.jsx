@@ -26,7 +26,7 @@ const ProductDetail = ({ data }) => {
     dispatch(addToFavorites({ id: data.id }));
     showMessage({
       message: "Added Product To Favorite!",
-      type: "success"
+      type: "success",
     });
   };
 
@@ -38,12 +38,12 @@ const ProductDetail = ({ data }) => {
     <ScrollView>
       <View
         id={data.id}
-        style={tw`relative w-full flex items-center bg-[${color["primary-color"]}] rounded-b-full pt-12`}
+        style={tw`relative w-full flex items-center bg-[${color["primary-color"]}] rounded-br-full pt-12`}
       >
         <Image
           source={data.image}
           style={{
-            width: 300,
+            width: 400,
             height: 300,
             objectFit: "contain",
           }}
@@ -56,14 +56,14 @@ const ProductDetail = ({ data }) => {
           <Text style={tw`font-bold text-xl`}>{data.price}$</Text>
         </View>
         <View style={tw`flex flex-row items-center justify-between mt-2`}>
-          <View style={tw`flex flex-row gap-1`}>
+          <View style={tw`flex flex-row gap-1 items-center justify-center`}>
             <IonIcon name="star" style={tw`text-green-500 font-bold`} />
             <IonIcon name="star" style={tw`text-green-500 font-bold`} />
             <IonIcon name="star" style={tw`text-green-500 font-bold`} />
             <IonIcon name="star" style={tw`text-green-500 font-bold`} />
             <IonIcon name="star" style={tw`text-gray-500 font-bold`} />
             <Text style={tw`text-sm`}>
-              {data.rating} . {data.numReview} reviews
+              {data.rating} - {data.numReviews} reviews
             </Text>
           </View>
           <Text style={tw`text-sm`}>
@@ -97,10 +97,7 @@ const ProductDetail = ({ data }) => {
             Add to Cart
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          style={tw`px-6 py-4`}
-          onPress={handleAddToFavorite}
-        >
+        <TouchableOpacity style={tw`px-6 py-4`} onPress={handleAddToFavorite}>
           <Text style={tw`text-center text-black text-md`}>
             Add to Favorite
           </Text>

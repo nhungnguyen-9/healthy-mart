@@ -10,7 +10,6 @@ import PRODUCTS from "../data/productData";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import { color } from "../constant/color";
-import CategoryScreen from "./CategoryScreen";
 import CartScreen from "./CartScreen";
 import FavoriteScreen from "./FavoriteScreen";
 import AllProductsScreen from "./AllProductScreens";
@@ -58,9 +57,9 @@ const HomeTabScreen = ({ navigation }) => {
   return (
     <ScrollView style={[tw`flex flex-col bg-white w-full`]}>
       <Header navigation={navigation} />
-      <View style={tw`px-6 pb-12 pt-4 bg-gray-100`}>
+      <View style={tw`px-2 pb-12 pt-4 bg-gray-100`}>
         <Promotion />
-        <ScrollCategory categories={categories} />
+        <ScrollCategory categories={categories} navigation={navigation} />
         <ProductContainer data={data} navigation={navigation} />
       </View>
     </ScrollView>
@@ -86,17 +85,33 @@ const HomeScreen = () => {
 
           return <Ionicons name={iconName} size={size} color={color} />;
         },
-        tabBarLabel: '',
+        tabBarLabel: "",
       })}
       tabBarOptions={{
         activeTintColor: color["primary-color"],
-        inactiveTintColor: "gray"
+        inactiveTintColor: "gray",
       }}
     >
-      <Tab.Screen name="Home" component={HomeTabScreen} options={{ headerShown: false }} />
-      <Tab.Screen name="All" component={AllProductsScreen} options={{ headerShown: false }} />
-      <Tab.Screen name="Cart" component={CartScreen} options={{ headerShown: false }} />
-      <Tab.Screen name="Favorite" component={FavoriteScreen} options={{ headerShown: false }} />
+      <Tab.Screen
+        name="Home"
+        component={HomeTabScreen}
+        options={{ headerShown: false }}
+      />
+      <Tab.Screen
+        name="All"
+        component={AllProductsScreen}
+        options={{ headerShown: false }}
+      />
+      <Tab.Screen
+        name="Cart"
+        component={CartScreen}
+        options={{ headerShown: false }}
+      />
+      <Tab.Screen
+        name="Favorite"
+        component={FavoriteScreen}
+        options={{ headerShown: false }}
+      />
     </Tab.Navigator>
   );
 };
