@@ -130,7 +130,7 @@ const PRODUCTS = [
   },
   {
     id: "9",
-    name: "Betternut squash",
+    name: "Butternut squash",
     description:
       "Butternut squash is a winter squash variety known for its elongated, pear-shaped form with a tan, smooth rind. Inside, it has a sweet, orange flesh with a nutty flavor.",
     image: require("../assets/products/betternut-removebg-preview.png"),
